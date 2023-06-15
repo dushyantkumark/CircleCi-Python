@@ -7,8 +7,18 @@ jobs:
     steps: # define steps 
       - checkout  #code checkout
       - run: python main.py  
+  test:
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout
+      - run: tests.py
+                
 
 workflows:
-  build_flow:  #workflow name as per your decision
+  build_and_test:  #workflow name as per your decision
     jobs:
-      - build  
+      - build   
+      - test:
+          requires:  #first build the code, if build pass then testing done
+            - build
