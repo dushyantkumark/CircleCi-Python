@@ -18,21 +18,21 @@ jobs:
       - image: cimg/python:3.11
     steps:
       - checkout
-      - run: echo "Deploying Successfully"
+      - run: echo "Deploying to production server"
                  
                 
 
 workflows:
-  build_and_test:  #workflow name as per your decision
+  build_test_deploy:  #workflow name as per your decision
     jobs:
       - build   
       - test:
-          requires:  #first build the code, if build pass then testing done
+          requires:  #test build khatam hona ka badd suru hoga
             - build
 
       - deploy:
-          requires:
+          requires: #deploy suru hoga test khatam hona ka badd
             - test
           filters:
-            branches:
+            branches: #deploy sirf main branch pa hoga
               only: main
