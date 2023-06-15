@@ -34,5 +34,5 @@ workflows:
           requires: #deploy suru hoga test khatam hona ka badd
             - test
           filters:
-            branches: #deploy sirf main branch pa hoga
+            branches: #deploy sirf main branch pa hii hoga
               only: main
