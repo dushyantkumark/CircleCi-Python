@@ -2,23 +2,23 @@ version: 2.1
 
 jobs:
   build:
-    docker:  #setup doker environment
-      - image: cimg/python:3.11
-    steps: # define steps 
+    docker:       #setup doker environment
+      - image: cimg/python:3.11  #image name you want
+    steps:        #define steps 
       - checkout  #code checkout
-      - run: python main.py  
+      - run: python main.py  #run container
   test:
-    docker:
-      - image: cimg/python:3.11
-    steps:
-      - checkout
-      - run: python tests.py
+    docker:       #setup docker environment
+      - image: cimg/python:3.11  #image name you want
+    steps:        #define steps
+      - checkout  #checkout your code
+      - run: python tests.py #run container
   deploy:
-    docker:
-      - image: cimg/python:3.11
-    steps:
-      - checkout
-      - run: echo "Deploying to production server"
+    docker:       #setup doker environment
+      - image: cimg/python:3.11  #image name you want
+    steps:        #define steps
+      - checkout  #checkout your code
+      - run: echo "Deploying to production server"  #display output 
                  
                 
 
@@ -35,4 +35,4 @@ workflows:
             - test
           filters:
             branches: #deploy sirf main branch pa hii hoga
-              only: main
+              only: main  #name of branch, where you have your code
